@@ -49,7 +49,7 @@ int main(){
             y++;                //carrega os pixels em uma matriz de inteiros
             x = 0;
         }
-
+        #pragma omp flush(c)
         matriz[x][y] = img.data[c];
         x++;
 
@@ -75,6 +75,7 @@ int main(){
     for(x=0;x<MAX;x++){
         #pragma omp ordered
         for(y=0;y<MAX;y++){
+            #pragma omp flush(c)
             img.data[c] = matriz[y][x]; //monta os pixel de volta ao array
             c++;
         }
