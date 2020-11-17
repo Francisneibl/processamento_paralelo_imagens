@@ -9,6 +9,12 @@
 
 #define MAX 512
 
+/*
+**Author: Francisnei Bernardes Lima
+**Data: 17/11/20
+**Projeto de processamento de imagens em paralelo
+**utilizando OpenMP e stb_lib
+*/
 
 typedef struct img{
     int altura;

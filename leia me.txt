@@ -2,8 +2,11 @@ Comentei apenas o arquivo filtro_alta.c
 pois o arquivo filtroMedia.c é muito semelhante mudando apenas o tipo do filtro
 aplicado na imagem.
 
-As bibliotecas *stb_image.h e *stb_image_write.h precisam estar na mesma pasta dos arquivos,
+**INSTRUÇÕES DE COMPILAÇÃO DO CÓDIGO**
+- As bibliotecas *stb_image.h e *stb_image_write.h precisam estar na mesma pasta dos arquivos,
 assim como a pasta img contendo a imagem de entrada lena_gray.gif
+
+- Atendendo aos requisitos acima basta seguir o processo de compilacao padrao para o open mp, como o parametro -fopenmp para o compilador.
 
 OBS: cada arquivo gera como saida uma imagem diferente sendo elas suavizada.bmp e realcada.bmp;
 

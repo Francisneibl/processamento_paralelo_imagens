@@ -9,8 +9,12 @@
 
 #define MAX 512
 
-
-
+/*
+**Author: Francisnei Bernardes Lima
+**Data: 17/11/20
+**Projeto de processamento de imagens em paralelo
+**utilizando OpenMP e stb_lib
+*/
 typedef struct img{
     int altura;
     int largura;
@@ -35,8 +39,8 @@ int main(){
     int buffer =img.altura * img.largura;
     int x,y,c;
 
-    //cria regiao paralela do codigo
-    #pragma omp parallel
+    //cria regiao paralela do codigo (fork)
+    #pragma omp parallel private(c)
     {
     #pragma omp for ordered //diretiva 'ordered' necessaria para que a imagem nao fique destorcida
     for(c=0; c<buffer; c++){
@@ -50,7 +54,10 @@ int main(){
         x++;
 
     }
-
+    }
+    //cria regiao paralela do codigo (fork)
+    #pragma omp parallel private(x,y)
+    {
     #pragma omp for ordered
     for(x=0;x<MAX;x++){
         #pragma omp ordered
@@ -61,7 +68,8 @@ int main(){
     }
 
     c=0;
-    #pragma omp parallel
+    //cria regiao paralela do codigo (fork)
+    #pragma omp parallel private(x,y)
     {
     #pragma omp for ordered
     for(x=0;x<MAX;x++){
